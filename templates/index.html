@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+
+    
+</head>
+<body>
+    
+    <div class="form-container">
+        <form method="POST" action="/predict">
+            <label for="AE">Area of Exposure:</label>
+            <input type="number" id="AE" name="AE" step="any" required><br><br>
+            <label for="Depth of cover">Depth of cover:</label>
+            <input type="number" id="DOC" name="DOC" step="any" required><br><br>
+            <label for="Rock mass rating">Rock mass rating:</label>
+            <input type="number" id="RMR" name="RMR" step="any" required><br><br>
+            <label for="Gallery width">Gallery width:</label>
+            <input type="number" id="GW" name="GW" step="any" required><br><br>
+            <label for="Inter-sectional span">Inter-sectional span:</label>
+            <input type="number" id="IS" name="IS" step="any" required><br><br>
+            <input type="submit" value="Estimated">
+        </form>  
+
+        {% if result is not none %}
+            <h2>Roof fall rate: {{ result }}</h2> 
+            <p>{{ category_message }}</p>        
+        {% endif %}
+    </div>
+</body>
+</html>
